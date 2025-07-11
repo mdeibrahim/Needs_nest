@@ -1,0 +1,45 @@
+# Django and Core Dependencies
+Django==5.2.4
+asgiref==3.9.1
+sqlparse==0.5.3
+tzdata==2025.2
+
+# Django REST Framework
+djangorestframework==3.16.0
+djangorestframework-simplejwt==5.5.0
+
+# Environment Configuration
+python-decouple==3.8
+
+# Authentication and JWT
+PyJWT==2.9.0
+social-auth-app-django==5.5.1
+social-auth-core==4.7.0
+python3-openid==3.2.0
+oauthlib==3.3.1
+requests-oauthlib==2.0.0
+
+# HTTP and Security
+requests==2.32.4
+urllib3==2.5.0
+certifi==2025.7.9
+charset-normalizer==3.4.2
+idna==3.10
+
+# Cryptography
+cryptography==45.0.5
+cffi==1.17.1
+pycparser==2.22
+
+# XML Processing
+defusedxml==0.7.1
+
+# Additional packages you might need (uncomment as needed)
+# python-decouple==3.8  # For environment variable management
+# Pillow==10.0.0  # For image handling
+# psycopg2-binary==2.9.7  # For PostgreSQL
+# redis==4.6.0  # For Redis
+# celery==5.3.1  # For background tasks
+# django-cors-headers==4.3.0  # For CORS handling
+# whitenoise==6.5.0  # For static file serving
+# gunicorn==21.2.0  # For production deployment
