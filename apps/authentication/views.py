@@ -3,11 +3,11 @@ from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
-
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import UserRegisterSerializer, ForgetPasswordSerializer, ResetPasswordSerializer
+from .serializers import UserRegisterSerializer, ForgetPasswordSerializer, ResetPasswordSerializer, LoginSerializer, LogoutSerializer
 
 User = get_user_model()
 
@@ -23,7 +23,21 @@ class RegisterAPIView(APIView):
                 "data": serializer.data
             }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class LoginAPIView(TokenObtainPairView):
+    serializer_class = LoginSerializer
+    
 
+class LogoutAPIView(APIView):
+    def post(self,request):
+        serializer = LogoutSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({
+                "message": "User logged out successfully.",
+                "status_code": "200"
+            }, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserProfileAPIView(APIView):
     def get(self, request):
